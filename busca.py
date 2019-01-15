@@ -11,7 +11,7 @@ def solucao(no):
     return lista
 
 # Busca em Largura
-def BFS(problema)
+def BFS(problema):
     no = No(problema.inicio)
     if problema.test_objetivo(no.estado)
         return [no.estado]
