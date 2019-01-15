@@ -13,7 +13,7 @@ def solucao(no):
 # Busca em Largura
 def BFS(problema):
     no = No(problema.inicio)
-    if problema.test_objetivo(no.estado)
+    if problema.test_objetivo(no.estado):
         return [no.estado]
     borda = [no]
     explorado = set()
@@ -21,7 +21,7 @@ def BFS(problema):
     while borda:
         no = borda.pop(0)
         explorado.add(no.estado)
-        for acao in problema.acoes(no.estado)
+        for acao in problema.acoes(no.estado):
             filho = No(acao, no)
             if filho not in borda and filho.estado not in explorado:
                 if problema.test_objetivo(filho.estado):
