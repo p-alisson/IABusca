@@ -22,7 +22,7 @@ class No(object):
         self.valor = valor
         self.profundidade = 0
         if pais:
-            self.profundidade = pais.profundidade
+            self.profundidade = pais.profundidade + 1
 
     # def solucao(self):
     #     return [no.acao for no in self.caminho()[1:]]
