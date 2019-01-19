@@ -38,10 +38,10 @@ def DFS(problema):
 
     while borda:
         no = borda.pop(-1)
-        for acao in problema.acoes(no.estado)
+        for acao in problema.acoes(no.estado):
             filho = No(acao, no)
             if filho not in borda:
-                if problema.test_objetivo(filho.estado)
+                if problema.test_objetivo(filho.estado):
                     return solucao(filho)
                 borda.append(filho)
     return None
@@ -50,7 +50,7 @@ def DFS(problema):
 
 def DFSV(problema):
     no = No(problema.inicio)
-    if problema.test_objetivo(no.estdo):
+    if problema.test_objetivo(no.estado):
         return [no.estado]
     borda = []
     explorado = set()
