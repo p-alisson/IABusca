@@ -1,5 +1,5 @@
 from classes import No
-from Queue import PriorityQueue
+from queue import PriorityQueue
 
 
 def solucao(no):
@@ -70,4 +70,48 @@ def DFSV(problema):
                     borda.append(filho)
     return None
 
+# Busca por profundidade limitada
+def DLS(problema, limite):
+    no = No(problema.inicio)
+    return DLSrecursiva(no, problema, limite)
 
+def DLSrecursiva(no, problema, limite):
+    if problema.test_objetivo(no.estado):
+        return solucao(no.estado)
+    elif limite == 0:
+        return "termino"
+    else:
+        termino_ocorreu = False
+        for acao in problema.acoes(no.estado):
+            filho = No(acao, no)
+            resultado = DLSrecursiva(filho, problema, limite-1)
+            if resultado == "termino":
+                termino_ocorreu = True
+            elif resultado:
+                return resultado
+            if termino_ocorreu:
+                return "termino"
+            else:
+                return False
+
+# Busca de custo uniforme
+def UCS(problema):
+    no = No(problema.inicio)
+    borda = PriorityQueue()
+    borda.put((no.custo_caminho, no))
+    explorado = set()
+
+    while borda:
+        aux = borda.get()
+        no = aux[1]
+        if problema.test_objetivo(no.estado):
+            return solucao(no)
+        explorado.add(no.estado)
+        for acao in problema.acoes(no.estado):
+            caminho_custo = int(problema.acao[acao][no.estado]) + no.custo_caminho
+            filho = No(acao, no, custo_caminho=caminho_custo)
+            it = [i for i in borda.queue]
+            if(filho.custo_caminho, filho) not in it and filho.estado not in explorado:
+                borda.put((filho.custo_caminho, filho))
+
+    return None
