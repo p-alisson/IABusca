@@ -23,7 +23,7 @@ def menu(problema):
     print("9: BUSCA BIDIRECIONAL:")
     print("0: SAIR")
 
-    opt = input("")
+    opt = int(input("Opção: "))
 
     os.system('cls' if os.name == 'nt' else 'clear')  # LIMPAR TERMINAL
 
