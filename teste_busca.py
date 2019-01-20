@@ -86,7 +86,7 @@ def menu(problema):
 
 option = 1
 while option:
-    problems = [Problema(INIT_MAP, GOAL_MAP, map_romania),
+    problema = [Problema(INIT_MAP, GOAL_MAP, map_romania),
                 Problema(INIT_VACCUM, GOAL_VACCUM, vaccum)]
     option = menu(problema)
 
