@@ -1,15 +1,14 @@
 import os
+
+from pip._vendor.distlib.compat import raw_input
+
 from busca import BFS, DFS, DFSV, IDS, DLS, UCS, GBFS, AS, BS
 from classes import Problema
 from mundos import map_romania, HSLD
-from mundos import vaccum_world as vaccum
 
-NUMBER_OF_ITERATIONS = 20
-INIT_MAP = "Oradea"
-GOAL_MAP = "Bucharest"
-INIT_VACCUM = "ESS"
-GOAL_VACCUM = "DLL"
-
+QTD_ITERACOES = 20
+INICIO_MAP = "Oradea"
+OBJETIVO_MAP = "Bucharest"
 
 def menu(problema):
     print("1: BUSCA EM LARGURA:")
@@ -29,29 +28,23 @@ def menu(problema):
 
     if opt == 1:
         print("BUSCA EM LARGURA:")
-        print(BFS(problema[0]))
-        print(BFS(problema[1]))
+        print(BFS(problema))
 
     elif opt == 2:
         print("BUSCA EM PROFUNDIDADE LIMITADA:")
-        print(DLS(problema[0], NUMBER_OF_ITERATIONS))
-        print(DLS(problema[1], NUMBER_OF_ITERATIONS))
+        print(DLS(problema, QTD_ITERACOES))
 
     elif opt == 3:
         print("BUSCA EM PROFUNDIDADE ITERATIVA:")
-        print(IDS(problema[0]))
-        print(IDS(problema[1]))
+        print(IDS(problema))
 
     elif opt == 4:
         print("BUSCA EM PROFUNDIDADE:")
-        print(DFS(problema[0]))
-        print(DFS(problema[1]))
+        print(DFS(problema))
 
     elif opt == 5:
         print("BUSCA EM PROFUNDIDADE COM VISITADOS:")
-        print(DFSV(problema[0]))
-        print(DFSV(problema[1]))
-
+        print(DFSV(problema))
     elif opt == 6:
         print("BUSCA CUSTO UNIFORME")
         a, b = raw_input("Início:\n"), raw_input("Objetivo:\n")
@@ -86,8 +79,7 @@ def menu(problema):
 
 option = 1
 while option:
-    problema = [Problema(INIT_MAP, GOAL_MAP, map_romania),
-                Problema(INIT_VACCUM, GOAL_VACCUM, vaccum)]
+    problema = Problema(INICIO_MAP, OBJETIVO_MAP, map_romania)
     option = menu(problema)
 
 print("Você saiu ^^ ")

@@ -20,7 +20,7 @@ map_romania = dict(
     Rimnicu=dict(Sibiu=80, Pitesti=97, Craiova=146),
     Urziceni=dict(Vaslui=142, Bucharest=85, Hirsova=98))
 
-vaccum_world = dict(
+mundo_aspirador = dict(
     ESS=dict(ELS="Aspirar", DSS="Direita"),
     ELS=dict(DLS="Direita"),
     ESL=dict(ELL="Aspirar", DSL="Direita"),
