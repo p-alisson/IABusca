@@ -47,25 +47,19 @@ def menu(problema):
         print(DFSV(problema))
     elif opt == 6:
         print("BUSCA CUSTO UNIFORME")
-        a, b = raw_input("Início:\n"), raw_input("Objetivo:\n")
-        print(UCS(Problema(a, b, map_romania)))
+        print(UCS(problema))
 
     elif opt == 7:
         print("BUSCA GULOSA")
-        inicio = raw_input("Início:\n")
-        p = Problema(inicio, "Bucharest", map_romania)
-        print(GBFS(p, HSLD))
+        print(GBFS(problema, HSLD))
 
     elif opt == 8:
         print("BUSCA A*")
-        inicio = raw_input("Início:\n")
-        p = Problema(inicio, "Bucharest", map_romania)
-        print(AS(p, HSLD))
+        print(AS(problema, HSLD))
 
     elif opt == 9:
         print("BUSCA BIDIRECIONAL:")
-        a, b = raw_input("Início:\n"), raw_input("Objetivo:\n")
-        print(BS(Problema(a, b, map_romania)))
+        print(BS(problema))
 
 
     elif opt == 0:

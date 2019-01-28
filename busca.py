@@ -125,6 +125,12 @@ def UCS(problema):
 
     return None
 
+# def BFGS(problema, f):
+#     f = memoize(f, 'f')
+#
+# def UCSA(problema):
+
+
 # Busca Bidirecional
 def BS(problema):
     no1, final = No(problema.inicio), No(problema.objetivo)
@@ -151,7 +157,7 @@ def BS(problema):
         explorado1.add(no1.estado)
         explorado2.add(no2.estado)
 
-        for acao in problema.acao(no1.estado):
+        for acao in problema.acao[no1.estado]:
             filho = No(acao, no1)
 
             if filho not in borda1 and filho.estado not in explorado1:
@@ -235,7 +241,7 @@ def GBFS(problema, heuristica):
             return solucao(no)
         explorado.add(no.estado)
 
-        for acao in problema.acao(no.estado):
+        for acao in problema.acao[no.estado]:
             custo_caminho = int(problema.acao[acao][no.estado]) + no.custo_caminho
             filho = No(acao, no, custo_caminho=custo_caminho)
 
