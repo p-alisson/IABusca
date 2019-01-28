@@ -77,7 +77,7 @@ def DLS(problema, limite):
 
 def DLSrecursiva(no, problema, limite):
     if problema.test_objetivo(no.estado):
-        return solucao(no.estado)
+        return solucao(no)
     elif limite == 0:
         return "termino"
     else:
