@@ -10,6 +10,7 @@ def solucao(no):
     lista.reverse()
     return lista
 
+
 # Busca em Largura
 def BFS(problema):
     no = No(problema.inicio)
@@ -29,6 +30,7 @@ def BFS(problema):
                 borda.append(filho)
     return None
 
+
 # Busca em profundidade
 def DFS(problema):
     no = No(problema.inicio)
@@ -46,6 +48,7 @@ def DFS(problema):
                 borda.append(filho)
     return None
 
+
 # Busca em profundidade com lista de visitados
 
 def DFSV(problema):
@@ -57,7 +60,7 @@ def DFSV(problema):
     borda.append(no)
 
     while borda:
-        no = borda.pop(-1)
+        no = borda.pop(-1) #retira o valor já visitado
         explorado.add(no.estado)
 
         for acao in problema.acoes(no.estado):
@@ -69,6 +72,7 @@ def DFSV(problema):
                 if filho.estado not in explorado:
                     borda.append(filho)
     return None
+
 
 # Busca por profundidade limitada
 def DLS(problema, limite):
@@ -89,10 +93,11 @@ def DLSrecursiva(no, problema, limite):
                 termino_ocorreu = True
             elif resultado:
                 return resultado
-            if termino_ocorreu:
-                return "termino"
-            else:
-                return False
+        if termino_ocorreu:
+            return "termino"
+        else:
+            return False
+
 
 # Busca por aprofundamento iterativo
 def IDS(problema):
@@ -102,7 +107,8 @@ def IDS(problema):
         if resultado != "termino":
             return resultado
         profundidade = profundidade + 1
-        
+
+
 # Busca de custo uniforme
 def UCS(problema):
     no = No(problema.inicio)
@@ -120,10 +126,11 @@ def UCS(problema):
             caminho_custo = int(problema.acao[acao][no.estado]) + no.custo_caminho
             filho = No(acao, no, custo_caminho=caminho_custo)
             it = [i for i in borda.queue]
-            if(filho.custo_caminho, filho) not in it and filho.estado not in explorado:
+            if (filho.custo_caminho, filho) not in it and filho.estado not in explorado:
                 borda.put((filho.custo_caminho, filho))
 
     return None
+
 
 # def BFGS(problema, f):
 #     f = memoize(f, 'f')
@@ -196,8 +203,8 @@ def trocarPais(no):
     nos.reverse()
 
     nos[0].pais = None
-    for i in range(len(nos)-1):
-        nos[i].pais = nos[i+1]
+    for i in range(len(nos) - 1):
+        nos[i].pais = nos[i + 1]
 
     return nos[-1]
 
@@ -227,6 +234,7 @@ def AS(problema, heuristica):
 
     return None
 
+
 # Busca pela melhor escolha
 def GBFS(problema, heuristica):
     no = No(problema.inicio)
@@ -248,5 +256,6 @@ def GBFS(problema, heuristica):
             it = [i for i in borda.queue]
             if (heuristica[filho.estado], filho) not in it and filho.estado not in explorado:
                 borda.put((heuristica[filho.estado], filho))
+
 
     return None
