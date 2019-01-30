@@ -89,10 +89,10 @@ def DLSrecursiva(no, problema, limite):
                 termino_ocorreu = True
             elif resultado:
                 return resultado
-            if termino_ocorreu:
-                return "termino"
-            else:
-                return False
+        if termino_ocorreu:
+            return "termino"
+        else:
+            return False
 
 # Busca por aprofundamento iterativo
 def IDS(problema):
