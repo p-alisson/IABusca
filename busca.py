@@ -5,15 +5,27 @@ from queue import PriorityQueue
 def solucao(no):
     lista = []
     while no:
-        lista.append(no.estado)
+        lista.append(no.acao)
         no = no.pais
     lista.reverse()
     return lista
+
+def solucaoPuzz(no):
+    solucao = []
+    solucao.append(no.acao)
+    path = no
+    while path.pais:
+        path = path.pais
+        solucao.append(path.acao)
+    solucao = solucao[:-1]
+    solucao.reverse()
+    return solucao
 
 # Busca em Largura
 def BFS(problema):
     no = No(problema.inicio)
     if problema.test_objetivo(no.estado):
+        print("JIIJ")
         return [no.estado]
     borda = [no]
     explorado = set()
