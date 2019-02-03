@@ -1,11 +1,11 @@
-from classes import No
+from classes import No, NoPuzz
 from queue import PriorityQueue
 
 
 def solucao(no):
     lista = []
     while no:
-        lista.append(no.acao)
+        lista.append(str(no.acao))
         no = no.pais
     lista.reverse()
     return lista
@@ -38,6 +38,25 @@ def BFS(problema):
             if filho not in borda and filho.estado not in explorado:
                 if problema.test_objetivo(filho.estado):
                     return solucao(filho)
+                borda.append(filho)
+    return None
+
+def BFSPuzz(problema):
+    no = NoPuzz(problema.inicio)
+    if problema.test_objetivo(no.estado):
+        print("JIIJ")
+        return [no.estado]
+    borda = [no]
+    explorado = []
+
+    while borda:
+        no = borda.pop(0)
+        explorado.append(no.estado)
+        filhos = no.gera_filhos()
+        for filho in filhos:
+            if filho.estado not in explorado:
+                if problema.test_objetivo(filho.estado):
+                    return solucaoPuzz(filho)
                 borda.append(filho)
     return None
 
