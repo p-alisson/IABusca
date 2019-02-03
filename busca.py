@@ -1,31 +1,19 @@
-from classes import No, NoPuzz
+from classes import No
 from queue import PriorityQueue
 
 
 def solucao(no):
     lista = []
     while no:
-        lista.append(str(no.acao))
+        lista.append(no.estado)
         no = no.pais
     lista.reverse()
     return lista
-
-def solucaoPuzz(no):
-    solucao = []
-    solucao.append(no.acao)
-    path = no
-    while path.pais:
-        path = path.pais
-        solucao.append(path.acao)
-    solucao = solucao[:-1]
-    solucao.reverse()
-    return solucao
 
 # Busca em Largura
 def BFS(problema):
     no = No(problema.inicio)
     if problema.test_objetivo(no.estado):
-        print("JIIJ")
         return [no.estado]
     borda = [no]
     explorado = set()
@@ -38,25 +26,6 @@ def BFS(problema):
             if filho not in borda and filho.estado not in explorado:
                 if problema.test_objetivo(filho.estado):
                     return solucao(filho)
-                borda.append(filho)
-    return None
-
-def BFSPuzz(problema):
-    no = NoPuzz(problema.inicio)
-    if problema.test_objetivo(no.estado):
-        print("JIIJ")
-        return [no.estado]
-    borda = [no]
-    explorado = []
-
-    while borda:
-        no = borda.pop(0)
-        explorado.append(no.estado)
-        filhos = no.gera_filhos()
-        for filho in filhos:
-            if filho.estado not in explorado:
-                if problema.test_objetivo(filho.estado):
-                    return solucaoPuzz(filho)
                 borda.append(filho)
     return None
 
@@ -78,7 +47,6 @@ def DFS(problema):
     return None
 
 # Busca em profundidade com lista de visitados
-
 def DFSV(problema):
     no = No(problema.inicio)
     if problema.test_objetivo(no.estado):

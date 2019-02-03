@@ -17,6 +17,7 @@ class ProblemaPuzz(Problema):
         super().__init__(inicio, objetivo, acao)
 
     def test_objetivo(self, estadoNo):
+        print("AIAIAI")
         return estadoNo == self.objetivo
 
 class No(object):
@@ -48,11 +49,11 @@ class NoPuzz(object):
             self.profundidade = pais.profundidade + 1
 
     def gera_filhos(self):
-        acoes = []
+        filhos = []
         x = self.estado.index(0)
-        i = int(x / 3)
-        j = int(x % 3)
-        acoes_possiveis = self.acoes_possiveis(i, j)
+        # i = int(x / 3)
+        # j = int(x % 3)
+        acoes_possiveis = self.acoes_possiveis(x)
 
         for acao in acoes_possiveis:
             novo_estado = self.estado.copy()
@@ -64,21 +65,22 @@ class NoPuzz(object):
                 novo_estado[x], novo_estado[x - 1] = novo_estado[x - 1], novo_estado[x]
             elif acao is 'R':
                 novo_estado[x], novo_estado[x + 1] = novo_estado[x + 1], novo_estado[x]
-            acoes.append(NoPuzz(novo_estado, self, acao))
-        return acoes
+            filhos.append(NoPuzz(novo_estado, self, acao))
 
-    @staticmethod
-    def acoes_possiveis(i,j):
+        return filhos
+
+    def acoes_possiveis(self, x):
         acao_possivel = ['U', 'D', 'L', 'R']
-        if i == 0:
-            acao_possivel.remove('U')
-        if i == 2:
-            acao_possivel.remove('D')
-        if j == 0:
+        if x % 3 == 0:
             acao_possivel.remove('L')
-        if j == 1:
+        if x < 3:
+            acao_possivel.remove('U')
+        if x % 3 == 2:
             acao_possivel.remove('R')
+        if x > 5:
+            acao_possivel.remove('D')
         return acao_possivel
 
-    def __repr__(self):
-        return self.estado + ", " + self.acao
+
+    def __str__(self):
+        return str(self.estado[0:3]) + '\n' + str(self.estado[3:6]) + '\n' + str(self.estado[6:9])
