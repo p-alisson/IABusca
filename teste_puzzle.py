@@ -1,13 +1,17 @@
 import os
 
-from busca_puzzle import solucaoPuzz, BFSPuzz, DFSPuzz, DFSVPuzz
+from busca import DLS
+from busca_puzzle import Astar, BFSPuzz, DFSPuzz, DFSVPuzz
 from classes import ProblemaPuzz
 
 QTD_ITERACOES = 20
-INICIO = [1, 3, 4,
-          8, 6, 2,
-          7, 0, 5]
-OBJETIVO = [1,2,3,8,0,4,7,6,5]
+INICIO = [0, 8, 4,
+          1, 6, 3,
+          7, 5, 2]
+OBJETIVO = [0,1,2,
+            3,4,5,
+            6,7,8]
+# OBJETIVO = [1,2,3,8,0,4,7,6,5]
 
 def menu(problema):
     print("1: BUSCA EM LARGURA:")
@@ -27,11 +31,11 @@ def menu(problema):
 
     elif opt == 2:
         print("BUSCA EM PROFUNDIDADE LIMITADA:")
-        # print(DLS(problema, QTD_ITERACOES))
+        print(DLS(problema, QTD_ITERACOES))
 
     elif opt == 3:
         print("BUSCA EM PROFUNDIDADE ITERATIVA:")
-        # print(IDS(problema))
+        print(Astar(problema))
 
     elif opt == 4:
         print("BUSCA EM PROFUNDIDADE:")

@@ -124,12 +124,6 @@ def UCS(problema):
 
     return None
 
-# def BFGS(problema, f):
-#     f = memoize(f, 'f')
-#
-# def UCSA(problema):
-
-
 # Busca Bidirecional
 def BS(problema):
     no1, final = No(problema.inicio), No(problema.objetivo)

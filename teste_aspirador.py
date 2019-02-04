@@ -2,7 +2,7 @@ import os
 
 from busca import BFS, DFS, DFSV, IDS, DLS
 from classes import Problema
-from mundos import mundo_aspirador as aspirador
+from mundos import mundo_aspirador, h_aspirador
 
 QTD_ITERACOES = 20
 INICIO_ASPIRADOR = "ESS"
@@ -40,7 +40,6 @@ def menu(problema):
         print("BUSCA EM PROFUNDIDADE COM VISITADOS:")
         print(DFSV(problema))
 
-
     elif opt == 0:
         return opt
 
@@ -52,7 +51,7 @@ def menu(problema):
 
 option = 1
 while option:
-    problema = Problema(INICIO_ASPIRADOR, OBJETIVO_ASPIRADOR, aspirador)
+    problema = Problema(INICIO_ASPIRADOR, OBJETIVO_ASPIRADOR, mundo_aspirador)
     option = menu(problema)
 
 print("Você saiu ^^ ")

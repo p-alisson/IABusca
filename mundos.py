@@ -31,14 +31,14 @@ mundo_aspirador = dict(
     DLL=dict(ELL="Esquerda")
 )
 h_aspirador = dict(
-    ESS=dict(ELS="2", DSS="1"),
-    ELS=dict(DLS="1"),
-    ESL=dict(ELL="2", DSL="1"),
-    ELL=dict(DLL="1"),
-    DSS=dict(DSL="2", ESS="1"),
-    DLS=dict(DLL="2", ELS="1"),
-    DSL=dict(ESL="1"),
-    DLL=dict(ELL="1")
+    Ess=dict(Els=2, Dss=1),
+    Els=dict(Dls=1),
+    Esl=dict(Ell=2, Dsl=1),
+    Ell=dict(Dll=1),
+    Dss=dict(Dsl=2, Ess=1),
+    Dls=dict(Dll=2, Els=1),
+    Dsl=dict(Esl=1),
+    Dll=dict(Ell=1)
 )
 
 # Distância de linha reta heurística

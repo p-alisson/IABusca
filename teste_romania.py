@@ -1,7 +1,5 @@
 import os
 
-from pip._vendor.distlib.compat import raw_input
-
 from busca import BFS, DFS, DFSV, IDS, DLS, UCS, GBFS, AS, BS
 from classes import Problema
 from mundos import map_romania, HSLD
@@ -24,7 +22,7 @@ def menu(problema):
 
     opt = int(input("Opção: "))
 
-    os.system('cls' if os.name == 'nt' else 'clear')  # LIMPAR TERMINAL
+    os.system('cls' if os.name == 'nt' else 'clear')
 
     if opt == 1:
         print("BUSCA EM LARGURA:")
